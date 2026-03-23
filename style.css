@@ -18,6 +18,9 @@ html {
 }
 
 body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   background: var(--bg);
   color: var(--text);
@@ -42,17 +45,17 @@ iframe {
 }
 
 .page-shell {
+  flex: 1 0 auto;
   width: min(calc(100% - 24px), var(--max-width));
   margin: 0 auto;
   padding: 28px 0 64px;
 }
 
 .site-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: flex-start;
-  gap: 24px;
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
   padding-bottom: 28px;
   border-bottom: 1px solid var(--line);
 }
@@ -66,36 +69,65 @@ h3 {
 
 
 .site-identity {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  justify-content: center;
+  gap: 8px;
+  grid-column: 2;
+  margin: 0;
   text-align: center;
-  background-image: url('img/header/Concept_2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;
+  width: min(100%, 560px);
+  max-width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 80px;
+  padding-right:80px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  background-image: url("img/header/Concept_2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.site-identity__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(16, 12, 10, 0.55);
+  border-radius: 12px;
 }
 
 .site-title {
-  color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: block;
+  color: inherit;
+  text-shadow: inherit;
+  font-family: "Cormorant Garamond", serif;
   font-size: 2rem;
   font-weight: 600;
   letter-spacing: 0.01em;
-  padding: 40px; 
+  padding: 0;
 }
 
 .site-email {
+  display: block;
   font-size: 0.9rem;
-  color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
-  padding: 20px;
+  color: inherit;
+  text-shadow: inherit;
+  padding: 0;
 }
 
 .header-socials {
+  grid-column: 1;
+  justify-self: start;
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .social-link {
@@ -384,18 +416,47 @@ figcaption {
 }
 
 .site-footer {
-  padding: 64px 24px 40px;
+  margin-top: auto;
+  padding: 64px 0 40px;
   text-align: center;
 }
 
+.site-footer__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  width: 100%;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  background-image: url('img/header/Concept_2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #5d4637;
+}
+
 .site-footer__name {
-  margin: 0 0 12px;
+  margin: 0;
   font-family: "Cormorant Garamond", serif;
   font-size: 2rem;
   font-weight: 600;
-  padding: 20px;
-  color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  background-image: url('img/header/Concept_2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+
+.site-footer__name-content {
+  display: inline-block;
+  padding: 0;
+}
+
+.site-footer__content-inner {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: rgba(16, 12, 10, 0.55);
+  border-radius: 12px;
 }
 
 .site-footer__links {
@@ -403,24 +464,30 @@ figcaption {
   flex-wrap: wrap;
   justify-content: center;
   gap: 14px 20px;
-  color: var(--muted);
+  color: white;
+}
+
+.site-footer__content .social-link {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.site-footer__content .social-link:hover {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.85);
 }
 
 @media (max-width: 820px) {
   .site-header {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
   }
 
-  .site-title {
-    position: static;
-    transform: none;
-  }
-
   .site-identity {
-    position: static;
-    transform: none;
+    grid-column: auto;
+    width: 100%;
   }
 
   .section-heading,
